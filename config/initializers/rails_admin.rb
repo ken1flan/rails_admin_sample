@@ -38,4 +38,15 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  # モデルの項目の表示順制御
+  settings = YAML.load_file(Rails.root.join('config/initializers/rails_admin.yml'))
+  settings['preffered_fields'].each do |model_name, preffered_fields|
+    config.model model_name do
+      preffered_fields.each do |field_name|
+        field field_name.to_sym
+      end
+      include_all_fields
+    end
+  end
 end

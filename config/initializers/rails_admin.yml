@@ -1,0 +1,4 @@
+preffered_fields:
+  Article:
+    - user
+    - title
